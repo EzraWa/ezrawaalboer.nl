@@ -17,6 +17,9 @@ jobs:
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
+          passphrase: ${{ secrets.REMOTE_PASSPHRASE }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
-          script: whoami
+          script: |
+            cd public_html
+            ls -la
