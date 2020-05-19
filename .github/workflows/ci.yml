@@ -52,14 +52,13 @@ jobs:
       - name: symlink folders
         if: ${{ success() }}
         uses: appleboy/ssh-action@master
-        env:
-          TARGET_PATH: ${{ secrets.REMOTE_TARGET }}
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
+          script_stop: true
           script: |
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/current/.env
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files $TARGET_PATH/current/files
-            ln -sf $TARGET_PATH/deployed/current/public $TARGET_PATH/public_html
+            ln -sf deployed/shared/boltcms/.env current/.env
+            ln -sf deployed/shared/boltcms/public/files current/files
+            ln -sf deployed/current/public public_html
