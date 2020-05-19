@@ -61,5 +61,5 @@ jobs:
           port: ${{ secrets.REMOTE_PORT }}
           script: |
             ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public_html/.env
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public_html/files
-            ln -sf $TARGET_PATH/deployed/current T$ARGET_PATH/public_html
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files $TARGET_PATH/public_html/files
+            ln -sf $TARGET_PATH/deployed/current/public $TARGET_PATH/public_html
