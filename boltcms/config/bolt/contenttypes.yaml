@@ -128,21 +128,22 @@ entries:
 # text, an 'our address' in the footer, or similar short blurbs of text.
 # For more info, see: https://docs.bolt.cm/howto/resource-contenttype
 
-blocks:
-    name: Blocks
-    singular_name: Block
+experience:
+    name: Experiences
+    singular_name: Experience
     fields:
         title:
             type: text
-            class: large
-            group: Block
-            label: Title of this Block
+            label: Title of Block
+        datePeriod:
+            type: text
+            label: Period of experience
+        description:
+            type: description
+            label: Description
         slug:
             type: slug
             uses: [ title ]
-        content:
-            type: html
-            height: 150px
         image:
             type: image
     show_on_dashboard: true
