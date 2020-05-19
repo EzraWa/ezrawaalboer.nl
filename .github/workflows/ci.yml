@@ -13,10 +13,14 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Validate composer.json and composer.lock
-        run: composer validate
+        run: |
+          cd boltcms
+          composer validate
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progres
+        run: |
+          cd boltcms
+          composer install --prefer-dist --no-progres
 
   deploy:
     runs-on: ubuntu-latest
