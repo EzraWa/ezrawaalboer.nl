@@ -1,10 +1,11 @@
 {% extends 'partials/base/base.twig' %}
 
 {% block main %}
+    {% setcontent homepage = "homepage" limit 1 returnsingle %}
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">Portfolio Website</div>
-            <div class="masthead-heading text-uppercase">Ezra Waalboer</div>
+            <div class="masthead-subheading">{{ homepage.subTitle }}</div>
+            <div class="masthead-heading text-uppercase">{{ homepage.title }}</div>
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
         </div>
     </header>
