@@ -67,3 +67,4 @@ jobs:
           script: |
             cd ~/deployed/current
             composer install --prefer-dist --no-progress --no-scripts
+            composer dumpauto
