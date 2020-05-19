@@ -46,14 +46,14 @@ jobs:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: symlink folders
-          uses: appleboy/ssh-action@master
-          env:
-            TARGET_PATH: ${{ secrets.REMOTE_TARGET }}
-          with:
-            host: ${{ secrets.REMOTE_HOST }}
-            username: ${{ secrets.REMOTE_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            port: ${{ secrets.REMOTE_PORT }}
-            script: |
-              ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public/.env
-              ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public/files
+        uses: appleboy/ssh-action@master
+        env:
+          TARGET_PATH: ${{ secrets.REMOTE_TARGET }}
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script: |
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public/.env
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public/files
