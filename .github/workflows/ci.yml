@@ -62,3 +62,4 @@ jobs:
           script: |
             ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public_html/.env
             ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public_html/files
+            ln -sf $TARGET_PATH/deployed/current T$ARGET_PATH/public_html
