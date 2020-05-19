@@ -33,7 +33,7 @@ locale: en
 #
 # The default for the Maintenance mode (503) page. Can be an (array of) template
 # names or identifiers for records, which will be tried until a match is found.
-maintenance_mode: '%env(MAINTANCE_MODE_ENABLED)%'
+maintenance_mode: false
 maintenance: [ blocks/503-maintenance-mode, 'helpers/page_503.html.twig' ]
 
 # If your site is reachable under different urls (say, both blog.example.org/
