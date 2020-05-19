@@ -1,0 +1,27 @@
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">{{ subTitle }}</h2>
+            <h3 class="section-subheading text-muted">{{ title }}</h3>
+        </div>
+        <ul class="timeline">
+            {% for experience in experiences %}
+                {% if loop.first %}
+                    <li>
+                        {% include 'partials/experience/experienceItem.twig' with experience %}
+                    </li>
+                {% else %}
+                    <li {% if loop.index0 % 2 == 1 %} class="timeline-inverted" {% endif %}>
+                        {% include 'partials/experience/experienceItem.twig' with experience %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4><br />Other stuff<br /></h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

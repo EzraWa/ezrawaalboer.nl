@@ -1,12 +1,40 @@
 {% extends 'partials/base/base.twig' %}
 
 {% block main %}
+
     {% setcontent homepage = "homepage" limit 1 returnsingle %}
-    <header class="masthead">
-        <div class="container">
-            <div class="masthead-subheading">{{ homepage.subTitle }}</div>
-            <div class="masthead-heading text-uppercase">{{ homepage.title }}</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
-        </div>
-    </header>
+    {% include 'partials/header/header.twig' with {
+        'subTitle': homepage.subTitle,
+        'title': homepage.title
+    } %}
+
+    {% setcontent experiences = 'experiences' where { status: 'published'} %}
+    {% include 'partials/sections/experienceList.twig' with {
+        'subTitle': 'Experiences',
+        'title': 'Some lorum ipsum here',
+        'experiences': [
+            {
+                'datePeriod': '2017 - Now',
+                'title': 'TechTribe / MakerStreet Development',
+                'description': '123456 232'
+            }, {
+                'datePeriod': '2015 - 2017',
+                'title': 'DTT Multimedia',
+                'description': '123456 232'
+            }, {
+                'datePeriod': '2013 - 2017',
+                'title': 'University of Amsterdam',
+                'description': '123456 232'
+            }, {
+                'datePeriod': '2013 - 2017',
+                'title': 'University of Amsterdam',
+                'description': '123456 232'
+            }, {
+                'datePeriod': '2013 - 2017',
+                'title': 'University of Amsterdam',
+                'description': '123456 232'
+            }
+        ]
+    } %}
+
 {% endblock main %}
