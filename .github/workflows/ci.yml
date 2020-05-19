@@ -15,10 +15,11 @@ jobs:
       - name: Install dependencies
         run: |
           cd boltcms
-          composer install --prefer-dist --no-progress
+          composer install --prefer-dist --no-progress --no-scripts
 
   deploy:
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - uses: actions/checkout@master
         if: ${{ success() }}
