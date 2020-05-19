@@ -20,5 +20,5 @@ jobs:
           passphrase: ${{ secrets.REMOTE_PASSPHRASE }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
-          source: "index.txt"
+          source: "index.html"
           target: ${{ secrets.REMOTE_TARGET }}
