@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd boltcms
-          composer install --prefer-dist --no-progres
+          composer install --prefer-dist --no-progress
 
   deploy:
     if: ${{ success() }}
@@ -55,5 +55,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public/.env
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public/files
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public_html/.env
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public_html/files
