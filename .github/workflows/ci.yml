@@ -33,6 +33,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
+            mkdir -p deployed/current
             mkdir -p deployed/shared/boltcms
             mkdir -p deployed/shared/boltcms/public/files
 
@@ -42,7 +43,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./boltcms/
-          remote_path: ${{ secrets.REMOTE_TARGET }}
+          remote_path: ${{ secrets.REMOTE_TARGET }}/deployed/current
           remote_host: ${{ secrets.REMOTE_HOST }}
           remote_port: ${{ secrets.REMOTE_PORT }}
           remote_user: ${{ secrets.REMOTE_USER }}
