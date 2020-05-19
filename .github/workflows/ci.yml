@@ -66,4 +66,4 @@ jobs:
           port: ${{ secrets.REMOTE_PORT }}
           script: |
             cd ~/deployed/current
-            composer install
+            composer install --prefer-dist --no-progress --no-scripts
