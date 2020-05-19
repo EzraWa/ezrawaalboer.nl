@@ -18,12 +18,13 @@ jobs:
           composer install --prefer-dist --no-progress
 
   deploy:
-    if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+        if: ${{ success() }}
 
       - name: executing remote ssh commands using password
+        if: ${{ success() }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -35,6 +36,7 @@ jobs:
             mkdir -p deployed/shared/boltcms/public/files
 
       - name: Deploy to host
+        if: ${{ success() }}
         uses: burnett01/rsync-deployments@4.0
         with:
           switches: -avzr --delete
@@ -46,6 +48,7 @@ jobs:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: symlink folders
+        if: ${{ success() }}
         uses: appleboy/ssh-action@master
         env:
           TARGET_PATH: ${{ secrets.REMOTE_TARGET }}
