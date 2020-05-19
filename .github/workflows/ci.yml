@@ -60,6 +60,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public_html/.env
-            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files $TARGET_PATH/public_html/files
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/current/.env
+            ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files $TARGET_PATH/current/files
             ln -sf $TARGET_PATH/deployed/current/public $TARGET_PATH/public_html
