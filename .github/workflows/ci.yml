@@ -7,18 +7,53 @@ on:
     branches: [ master ]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progres
+
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
 
-      - name: rsync deployments
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script: |
+            mkdir -p deployed/shared/boltcms
+            mkdir -p deployed/shared/boltcms/public/files
+
+      - name: Deploy to host
         uses: burnett01/rsync-deployments@4.0
         with:
           switches: -avzr --delete
-          path: ./index.html
+          path: ./boltcms/
           remote_path: ${{ secrets.REMOTE_TARGET }}
           remote_host: ${{ secrets.REMOTE_HOST }}
           remote_port: ${{ secrets.REMOTE_PORT }}
           remote_user: ${{ secrets.REMOTE_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: symlink folders
+          uses: appleboy/ssh-action@master
+          env:
+            TARGET_PATH: ${{ secrets.REMOTE_TARGET }}
+          with:
+            host: ${{ secrets.REMOTE_HOST }}
+            username: ${{ secrets.REMOTE_USER }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            port: ${{ secrets.REMOTE_PORT }}
+            script: |
+              ln -sf $TARGET_PATH/deployed/shared/boltcms/.env $TARGET_PATH/public/.env
+              ln -sf $TARGET_PATH/deployed/shared/boltcms/public/files T$ARGET_PATH/public/files
