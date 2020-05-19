@@ -59,7 +59,7 @@ jobs:
           port: ${{ secrets.REMOTE_PORT }}
           script_stop: true
           script: |
-            rm public_html
+            rm -f public_html
             ln -sf deployed/shared/boltcms/.env deployed/current/.env
             ln -sf deployed/shared/boltcms/public/files deployed/current/public/files
             ln -sf deployed/current/public public_html
