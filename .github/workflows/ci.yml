@@ -62,7 +62,7 @@ jobs:
           script_stop: true
           script: |
             rm -f public_html
-            rm -f $TARGET_FOLDER/deployed/current/public/files
-            ln -sf $TARGET_FOLDER/deployed/shared/boltcms/.env $TARGET_FOLDER/deployed/current/.env
-            ln -sf $TARGET_FOLDER/deployed/shared/boltcms/public/files $TARGET_FOLDER/deployed/current/public/files
-            ln -sf $TARGET_FOLDER/deployed/current/public public_html
+            rm -f ~/deployed/current/public/files
+            ln -sf ~/deployed/shared/boltcms/.env ~/deployed/current/.env
+            ln -sf ~/deployed/shared/boltcms/public/files ~/deployed/current/public/files
+            ln -sf ~/deployed/current/public public_html
