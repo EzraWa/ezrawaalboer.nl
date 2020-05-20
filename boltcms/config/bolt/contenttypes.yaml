@@ -28,106 +28,6 @@ homepage:
     icon_many: "fa:home"
     icon_one: "fa:home"
 
-
-# Pages can be used for the more 'static' pages on your site. This content-type
-# has a 'templateselect' field, which allows you to override the record_template
-# setting for an individual page.
-# The taxonomy for this ContentType is defined as 'groups', which is a so-called
-# "grouping taxonomy". This way you can easily group sets of pages that logically
-# belong together. If your site has a 'services' section, in which you'd like to
-# list the different types of services a company provides, you can group these
-# together.
-
-pages:
-    name: Pages
-    singular_name: Page
-    fields:
-        title:
-            type: text
-            class: large
-            group: content
-        slug:
-            type: slug
-            uses: title
-        image:
-            type: image
-            label: Highlighted image
-        teaser:
-            type: html
-            height: 150px
-        marky:
-            type: markdown
-        body:
-            type: html
-            height: 300px
-            allowtwig: true
-        textarea:
-            type: textarea
-            postfix: "This is a plain text area. the contents will <em><strong>not</em></strong> be processed."
-        checkbox:
-            type: checkbox
-            label: "This is a checkbox"
-        template:
-            type: templateselect
-            filter: '*.twig'
-    taxonomy: [ groups ]
-    records_per_page: 5
-    order: id
-
-# Entries can be used for things like 'news' or 'blogpostings'. They have a
-# 'teaser', which can be used for a short blurb on listing-pages, allowing
-# visitors to click-through to the rest of the entry. It also has fields for an
-# image and an optional video.
-# A relation is defined to the pages ContentType. This way you can refer to a
-# page from your news-item.
-# This ContentType defines 'categories' and 'tags' as taxonomies, allowing the
-# editor to use both to categorize a specific entry.
-# The 'order' is set to '-datepublish', which means that newer entries will be
-# shown above older entries.
-
-entries:
-    name: Entries
-    singular_name: Entry
-    fields:
-        title:
-            type: text
-            class: large
-            group: content
-        slug:
-            type: slug
-            uses: title
-        teaser:
-            type: html
-            height: 150px
-        body:
-            type: html
-            height: 300px
-        image:
-            type: image
-            group: media
-            upload: entries
-        video:
-            type: video
-    relations:
-        pages:
-          multiple: false
-          order: title
-          label: Select a page
-    taxonomy: [ categories, tags, groups ]
-    record_template: entry.twig
-    listing_template: listing.twig
-    listing_records: 10
-    default_status: published
-    order: -publishedAt
-    records_per_page: 10
-    icon_many: "fa:file-alt"
-    icon_one: "fa:file-alt"
-
-# The 'Blocks' ContentType is a so-called 'resource ContentType'. This means
-# that it can be used to manage smaller pieces of content, like the 'about us'
-# text, an 'our address' in the footer, or similar short blurbs of text.
-# For more info, see: https://docs.bolt.cm/howto/resource-contenttype
-
 experience:
     name: Experiences
     singular_name: Experience
@@ -139,7 +39,7 @@ experience:
             type: text
             label: Period of experience
         description:
-            type: text
+            type: textarea
             label: Description
         url:
             type: text
@@ -152,6 +52,30 @@ experience:
             uses: [ title ]
         image:
             type: image
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    order: title
+    icon_many: "fa:cubes"
+    icon_one: "fa:cube"
+
+aboutMeItems:
+    name: AboutMeItems
+    singular_name: AboutMeItem
+    fields:
+        title:
+            type: text
+            label: Title
+        description:
+            type: textarea
+            label: Description
+        favicon:
+            type: text
+            label: Favicon class
+        slug:
+            type: slug
+            uses: [ title ]
     show_on_dashboard: true
     viewless: true
     default_status: published

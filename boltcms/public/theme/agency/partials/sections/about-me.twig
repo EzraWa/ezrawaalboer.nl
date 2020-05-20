@@ -1,0 +1,18 @@
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">{{ title }}</h2>
+            <h3 class="section-subheading text-muted">{{ description }}</h3>
+        </div>
+        <div class="row text-center">
+            {% for aboutItem in aboutMeItems %}
+                {% include 'partials/about-me/about-me-item.twig' with {
+                    'title': aboutItem.title,
+                    'description': aboutItem.description,
+                    'favicon': aboutItem.favicon
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

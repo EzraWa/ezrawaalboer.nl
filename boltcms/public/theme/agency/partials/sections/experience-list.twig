@@ -1,4 +1,4 @@
-<section class="page-section" id="experiences">
+<section class="page-section bg-light" id="experiences">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">{{ subTitle }}</h2>
@@ -8,7 +8,7 @@
             {% for experience in experiences %}
                 {% if loop.first %}
                     <li>
-                        {% include 'partials/experience/experienceItem.twig' with {
+                        {% include 'partials/experience/experience-item.twig' with {
                             'datePeriod': experience.datePeriod,
                             'title': experience.title,
                             'description': experience.description,
@@ -18,7 +18,7 @@
                     </li>
                 {% else %}
                     <li {% if loop.index0 % 2 == 1 %} class="timeline-inverted" {% endif %}>
-                        {% include 'partials/experience/experienceItem.twig' with {
+                        {% include 'partials/experience/experience-item.twig' with {
                             'datePeriod': experience.datePeriod,
                             'title': experience.title,
                             'description': experience.description,

@@ -8,8 +8,15 @@
         'title': homepage.title
     } %}
 
+    {% setcontent aboutMeItems = 'AboutMeItems' where { status: 'published'} %}
+    {% include 'partials/sections/about-me.twig' with {
+        'title': 'About me',
+        'description': 'Some lorum ipsum here',
+        'aboutMeItems': aboutMeItems
+    } %}
+
     {% setcontent experiences = 'experiences' where { status: 'published'} orderby 'rank' %}
-    {% include 'partials/sections/experienceList.twig' with {
+    {% include 'partials/sections/experience-list.twig' with {
         'subTitle': 'Experiences',
         'title': 'Some lorum ipsum here',
         'experiences': experiences
