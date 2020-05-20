@@ -8,33 +8,11 @@
         'title': homepage.title
     } %}
 
-    {% setcontent experiences = 'experiences' where { status: 'published'} %}
+    {% setcontent experiences = 'experiences' where { status: 'published'} orderby 'rank' %}
     {% include 'partials/sections/experienceList.twig' with {
         'subTitle': 'Experiences',
         'title': 'Some lorum ipsum here',
-        'experiences': [
-            {
-                'datePeriod': '2017 - Now',
-                'title': 'TechTribe / MakerStreet Development',
-                'description': '123456 232'
-            }, {
-                'datePeriod': '2015 - 2017',
-                'title': 'DTT Multimedia',
-                'description': '123456 232'
-            }, {
-                'datePeriod': '2013 - 2017',
-                'title': 'University of Amsterdam',
-                'description': '123456 232'
-            }, {
-                'datePeriod': '2013 - 2017',
-                'title': 'University of Amsterdam',
-                'description': '123456 232'
-            }, {
-                'datePeriod': '2013 - 2017',
-                'title': 'University of Amsterdam',
-                'description': '123456 232'
-            }
-        ]
+        'experiences': experiences
     } %}
 
 {% endblock main %}

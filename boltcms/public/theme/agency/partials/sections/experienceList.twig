@@ -8,11 +8,21 @@
             {% for experience in experiences %}
                 {% if loop.first %}
                     <li>
-                        {% include 'partials/experience/experienceItem.twig' with experience %}
+                        {% include 'partials/experience/experienceItem.twig' with {
+                            'datePeriod': experience.datePeriod,
+                            'title': experience.title,
+                            'description': experience.description,
+                            'image': experience.image
+                        } %}
                     </li>
                 {% else %}
                     <li {% if loop.index0 % 2 == 1 %} class="timeline-inverted" {% endif %}>
-                        {% include 'partials/experience/experienceItem.twig' with experience %}
+                        {% include 'partials/experience/experienceItem.twig' with {
+                            'datePeriod': experience.datePeriod,
+                            'title': experience.title,
+                            'description': experience.description,
+                            'image': experience.image
+                        } %}
                     </li>
                 {% endif %}
             {% endfor %}

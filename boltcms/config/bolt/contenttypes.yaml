@@ -139,8 +139,11 @@ experience:
             type: text
             label: Period of experience
         description:
-            type: description
+            type: text
             label: Description
+        rank:
+            type: integer
+            label: Rank of the experience in the experience list (lower number means higher ranking)
         slug:
             type: slug
             uses: [ title ]
