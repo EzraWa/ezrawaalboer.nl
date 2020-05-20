@@ -141,6 +141,9 @@ experience:
         description:
             type: text
             label: Description
+        url:
+            type: text
+            label: Url
         rank:
             type: integer
             label: Rank of the experience in the experience list (lower number means higher ranking)
